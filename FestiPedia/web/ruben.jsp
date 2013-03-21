@@ -12,6 +12,6 @@
         <title>Dit is Ruben zijn webpagina</title>
     </head>
     <body>
-        <h1>Ruben zijn webpagina!</h1>
+        <h1>Ruben zijn webpagina is de beste!</h1>
     </body>
 </html>
