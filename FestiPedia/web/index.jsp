@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <p>Test Rens die zuigt door Jonas</p>
+        <p>Test met 2 bestanden</p>
     </body>
 </html>
