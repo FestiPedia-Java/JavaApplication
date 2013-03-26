@@ -1,3 +1,4 @@
+
 body {
     background-color:  #eee;
     background-color:  #ccc;
@@ -7,7 +8,8 @@ header{margin-top: 20px !important;}
 
 
 .logo {
-    width: 300px;       
+    width: 200px;  
+    margin-left: 100px;     
 }
 
 
@@ -35,11 +37,11 @@ header{margin-top: 20px !important;}
     background-color: #d81c32;
     color: white;
     text-shadow:1px 1px 1px black;   
-    background-color:#eb0000;
+    background-color:#1500D6;
 }
 
 .top_menu li a:hover{
-    background-color: #901826;
+    background-color: #0F0091;
     
 }
 
@@ -53,7 +55,7 @@ header{margin-top: 20px !important;}
 }
 
 .menu-container {
-   background-color: #eb0000 ;  
+   background-color:#00136e;  
    
    margin-top: 20px;
    padding: 0px !important;
@@ -98,12 +100,12 @@ header{margin-top: 20px !important;}
     font-size: 16px;
     width: 150px;
     
-    background-color: #eb0000;
+    background-color: #1500D6;
     color: white;
 }
 #nav a:hover{
     color:#fff;
-    background:#901826;
+    background-color: #3f00dd;
        
     text-decoration:none;
 }
@@ -129,7 +131,7 @@ header{margin-top: 20px !important;}
     left:-18px; /* Bring back on-screen when needed */
 }
 #nav li:hover a{ /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
-    background: #901826;
+    background-color:#01008c;
     text-decoration:none;
     
 }
@@ -188,10 +190,11 @@ header{margin-top: 20px !important;}
 
 footer {
     margin-top: 20px !important;
-    background-color: #eb0000;
+      background-color:#00136e; 
     box-shadow: 0px 0px 5px #2a2a2a inset;
     padding: 15px;
     width: 930px !important;
+    box-shadow: 0px 0px 5px #2a2a2a;
 }
 
 footer div{

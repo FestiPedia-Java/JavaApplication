@@ -38,7 +38,7 @@
 
 	<header class="row">  
          	
-        <div class="col col_8" ><img class="logo" src="images/Blauw.png" alt="Site-logo"/> </div><!-- logo col_7 -->
+        <div class="col col_8" ><img class="logo" src="images/red.png" alt="Site-logo"/> </div><!-- logo col_7 -->
         
         <nav class="col col_8">
         	<ul class="top_menu">
