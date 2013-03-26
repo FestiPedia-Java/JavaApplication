@@ -1,0 +1,67 @@
+.menu-container .menu-list {
+   float: left; 
+   margin-bottom: 5px;
+   margin-left: 0px;
+  
+}
+
+.menu-container .menu-list li {
+  
+   margin-left: 5px;
+    display: inline;
+    float: left;
+    margin-top: 5px;
+}
+
+
+.menu-container .menu-list li a{
+     display:block;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    width: 150px;
+    box-shadow: 0px 0px 5px black;
+}
+
+.menu-container .menu-list li a:hover{
+    background-color: #901826;
+    
+}
+
+.menu-container .menu-list li:hover .sub{ 
+		display:block; 
+		position:absolute}
+
+.menu-container ul{
+		font-weight:bold;color:#ffffff;
+		margin:0;
+		padding:0;
+		list-style:none}
+	.menu-container ul li{
+		display:block;
+		position:relative;
+		float:left}
+	.menu-container li ul{display:none}
+	 .menu-container ul li a{
+		display:block;
+		margin-left:1px;
+		text-decoration:none;
+		color:#ffffff;
+		border-top:1px solid #B75963;
+		padding: 5px 15px 5px 15px;
+		background:#6E5463;
+		white-space:nowrap}
+	 .menu-container ul li a:hover{background:#985963;color:inherit}
+ .menu-container	li:hover ul{ 
+		display:block; 
+		position:absolute}
+	 .menu-container li:hover li{ 
+		font-size:70%;
+		clear:left; 
+		width:12em}
+	.menu-container li:hover a{ background:#985963;color:inherit}
+	.menu-container li:hover li a:hover{background:#B75963;color:inherit}
+
+	
