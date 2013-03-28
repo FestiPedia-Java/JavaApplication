@@ -36,7 +36,9 @@
 
 
 
-	<header class="row">  
+	<header class="row"> 
+            
+         
          	
         <div class="col col_8" ><img class="logo" src="images/red.png" alt="Site-logo"/> </div><!-- logo col_7 -->
         
@@ -84,7 +86,7 @@
 
 <div class="row inhoud"><!-- Content -->
 
-	
+	 <div class="col col_16" > <h1>Home</h1></div> 
         <div class="col col_8" ><div class="col-inhoud">
         
         
