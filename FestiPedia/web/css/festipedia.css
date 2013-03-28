@@ -156,12 +156,13 @@ header{margin-top: 20px !important;}
 }
 
 .inhoud {
-  
+    background-color: #8b0000;  
+   padding-bottom:20px;
    
    
    margin-top: 20px;
    
-  
+    box-shadow: 0px 0px 5px #2a2a2a;
   
    width: 960px;
 }
@@ -173,7 +174,7 @@ header{margin-top: 20px !important;}
 .inhoud .col{
    background-color: #a0a0a0 ; 
    
-   background-color: #a0a0a0 ; 
+   background-color: #dddddd ; 
    
    box-shadow: 0px 0px 5px #2a2a2a;
    padding: 0px;
@@ -186,6 +187,12 @@ header{margin-top: 20px !important;}
 
 .col-inhoud{
     margin: 10px;
+}
+
+.tabs{
+    
+    margin-left:20px !important;
+    margin-top:20px !important;
 }
  
 

@@ -33,7 +33,7 @@ inspired by the http://www.1kbgrid.com/
 .col_4, .width_4 	 {	width:220px; }
 .col_5, .width_5	 {	width:280px; }
 .col_6, .width_6	 {	width:340px; }
-.col_7, .width_7	 {	width:450px; margin-left:20px; }
+.col_7, .width_7	 {	width:400px; }
 .col_8, .width_8	 {	width:460px; }
 .col_9, .width_9 	 {	width:520px; }
 .col_10, .width_10	 {	width:580px; }
