@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset=utf-8>
-    <title>Home | FestiPedia</title>
+    <title>| FestiPedia</title>
     
     <script src="js/modernizr-1.7.min.js"></script><!-- this is the javascript allowing html5 to run in older browsers -->
     
@@ -29,6 +29,9 @@
     <!-- Own additions -->
      <link rel="stylesheet" type="text/css" href="css/festipedia.css" media="screen" />
     
+     <script src="js/jquery.js"></script>
+     <script src="js/jquery-bpop.js"></script>
+     
  <link rel="shortcut icon" href="/images/icon.png">
     </head>
 
@@ -44,7 +47,7 @@
         
         <nav class="col col_8">
         	<ul class="top_menu">
-            	<li><div id="login-panel"></div><a href="#" >Admin </a></li>
+            	
                 <li><a href="#" >Festivals</a></li>
                 <li><a href="#" >Bands</a></li>
             	

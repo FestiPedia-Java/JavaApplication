@@ -3,7 +3,7 @@
     Created on : 21-mrt-2013, 15:22:54
     Author     : Groep 15
 --%>
-
+<%! String siteNaam = "Home"; %>  
 <jsp:include page="includes/header.jsp" />
 <div class="row inhoud"><!-- Content -->
 

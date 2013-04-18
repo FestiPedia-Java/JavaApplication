@@ -203,16 +203,120 @@ footer {
    background-color: #8b0000;  
    
     box-shadow: 0px 0px 5px #2a2a2a inset;
-    padding: 15px;
-    width: 930px !important;
+    
+    width: 960px !important;
+    box-shadow: 0px 0px 5px #2a2a2a;
 }
 
 footer div{
-    margin: auto ;
-    text-align: center;
+    padding-left:100px;
     color: white;
     font-size: 14px;
+    padding-top:15px;
+    margin-bottom: 15px;
+    width:500px;
+    float:left;
+}
+
+#admin-knop{
+    float:right;
+     display:block;
+     padding-top:15px;
+     padding-bottom:16px;
+    width: 100px;
+    text-align: center;
+    border-left: 1px solid white;
+    background:#8b0000;
+    text-decoration: none;
+    color:white;  
+}
+
+#admin-knop:hover{
+    background-color: #690000;
+    
+}
+#admin-knop:visited{
+        text-decoration: none;
+        color:white; 
+}
+
+
+#login-panel{ 
+    
+    margin: 0 auto;
+    color: #000;
+	background-color: #f5f5f5;
+	
+	border: 1px solid #111;
+	box-shadow: 0 0 5px #111 inset; 
+        display:none; 
+    padding:20px;
+    width:300px;
+    min-height: 180px;
+    padding-top: 20px;
+    z-index: 9999; 
+    left: 40%; 
+    position: absolute;
+    top: 20px; 
+}
+
+#login-panel input{
+    float:left;
+    width:200px;
+}
+
+#login-panel .icon{
+    float:left;
+   margin-left:5px;
+}
+
+.login-knop{
+    width:200px;
 }
 
 
 
+.bClose{
+position: absolute;
+top: -10px;
+right: -10px;
+z-index: 9003;
+display: block;
+width: 26px;
+height: 26px;
+background: url("../images/subwindow_close.png") no-repeat 0 0;
+text-indent: -999px;
+overflow: hidden;
+}
+
+.red:hover {
+cursor: pointer;
+opacity: 1;
+background-color: #c30100;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0, #c30100), color-stop(1.0, #800300));
+background: -webkit-linear-gradient(center top, #c30100 0%, #800300 100%);
+background: -moz-linear-gradient(center top, #c30100 0%, #800300 100%);
+background: -ms-linear-gradient(center top, #c30100 0%, #800300 100%);
+background: -o-linear-gradient(center top, #c30100 0%, #800300 100%);
+text-decoration: none;
+color: white;
+}
+.red {
+background-color: #aa0300;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0, #aa0300), color-stop(1.0, #6d0200));
+background: -webkit-linear-gradient(center top, #aa0300 0%, #6d0200 100%);
+background: -moz-linear-gradient(center top, #aa0300 0%, #6d0200 100%);
+background: -ms-linear-gradient(center top, #aa0300 0%, #6d0200 100%);
+background: -o-linear-gradient(center top, #aa0300 0%, #6d0200 100%);
+border: 1px solid #111111;
+
+box-shadow: 0 1px 1px rgba(255, 255, 255, 0.1), 0 -1px 1px rgba(0, 0, 0, 0.2);
+color: #FFF;
+display: inline-block;
+margin: 3px 0 0;
+padding: 4px 10px;
+text-align: center;
+text-decoration: none;
+opacity: 0.9;
+font: 13.3px/1.7 "Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+}
