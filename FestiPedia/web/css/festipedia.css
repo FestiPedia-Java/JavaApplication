@@ -2,6 +2,7 @@
 body {
     background-color:  #eee;
     background-color:  #ccc;
+    background: url(../images/bg.png) repeat scroll 0% 0% transparent;
 }
 
 header{margin-top: 20px !important;}
@@ -183,6 +184,7 @@ header{margin-top: 20px !important;}
    
    padding: 0px;
    margin-top:10px;
+   box-shadow: 0 0 5px #111 inset;
 }
 
 .col-inhoud{
