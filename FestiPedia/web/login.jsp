@@ -36,7 +36,7 @@
         
         if(myname!=null)
             {
-             out.println("U ben ingelogd als  " + myname + "  , <a href=\"logout.jsp\" >Logout?!</a>");
+             out.println("<p>U ben ingelogd als  " + myname + "  , <a href=\"logout.jsp\" >Logout?!</a></p>");
             }
         else 
             {
@@ -44,17 +44,17 @@
             String username = request.getParameter("name");
             String password = request.getParameter("pass");
             
-           out.println("Checking login<br>");
+           out.println("<p>Checking login...</p>");
            
  
             
             if (username.toLowerCase().trim().equals("admin") && password.toLowerCase().trim().equals("phl")) {
-                  out.println("Welkom " + username + " <a href=\"index.jsp\">Back to main</a>");
+                  out.println("<p>Welkom " + username + " <a href=\"index.jsp\">Back to main</a></p>");
                 session.setAttribute("username", username);
             }
            else 
                {
-                out.println( "Foute naam en wachtwoord combinatie.");
+                out.println( "<p style='color:red;'>Foute naam en wachtwoord combinatie.</p>");
                 
                 %>
                 
@@ -74,7 +74,14 @@
             
             %>
             
-           
+            
+            
+         <script type="text/javascript">
+$( document ).ready(function() {
+    $("#admin-knop").click();
+    
+});
+</script>    
 
         
    
