@@ -31,6 +31,7 @@
     
      <script src="js/jquery.js"></script>
      <script src="js/jquery-bpop.js"></script>
+     <script src="js/validator.js"></script>
      
  <link rel="shortcut icon" href="/images/icon.png">
     </head>
