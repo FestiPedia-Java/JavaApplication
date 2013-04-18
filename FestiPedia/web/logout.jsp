@@ -12,7 +12,7 @@
 
 <div class="row inhoud"><!-- Content -->
 
-	 <div class="col col_16" > 
+	 <div class="inform col col_16" > 
          
 
 <%

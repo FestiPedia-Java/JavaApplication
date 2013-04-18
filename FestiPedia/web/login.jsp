@@ -15,33 +15,71 @@
 
 	 <div class="col col_16" > 
          
-             <%
-            String username = request.getParameter("name");
-            String password = request.getParameter("pass");
-           out.println("Checking login<br>");
-            if (username == null || password == null) {
- 
-                out.print("Je hebt niet beide invoervaken ingevuld"); // Dit zou door validatie overbodig moeten zijn
-            }
- 
-            
-            if (username.toLowerCase().trim().equals("admin") && password.toLowerCase().trim().equals("pxl")) {
-                out.println("Welkom " + username + " <a href=\"index.jsp\">Back to main</a>");
-                session.setAttribute("username", username);
-            }
-           else 
-               {
-                out.println("Foute naam en wachtwoord combinatie.");
-           }
- 
- 
- 
- 
-%> 
+             <h1>Login</h1>
+         
              
          </div> 
        
         
     
 </div><!-- row -->
+
+<div id="login-panel">
+    
+    
+    <a href="#" class="bClose" id="subwindow_close">Close</a>
+    
+    <h1>Login</h1>
+    
+     <%
+        String myname =  (String)session.getAttribute("username");
+        
+        if(myname!=null)
+            {
+             out.println("U ben ingelogd als  " + myname + "  , <a href=\"logout.jsp\" >Logout?!</a>");
+            }
+        else 
+            {
+            
+            String username = request.getParameter("name");
+            String password = request.getParameter("pass");
+            
+           out.println("Checking login<br>");
+           
+ 
+            
+            if (username.toLowerCase().trim().equals("admin") && password.toLowerCase().trim().equals("phl")) {
+                  out.println("Welkom " + username + " <a href=\"index.jsp\">Back to main</a>");
+                session.setAttribute("username", username);
+            }
+           else 
+               {
+                out.println( "Foute naam en wachtwoord combinatie.");
+                
+                %>
+                
+                 <form action="login.jsp" method="post" id="login-form">
+    <input type="text" name="name" size="50" class="required"><img class="icon" src="images/user.png" />
+    <input type="password" name="pass" size="50" class="required"><img class="icon" src="images/pass.png" />
+
+    <input type="submit" value="Login" class="red login-knop">
+    </form>
+                
+                <%
+                
+           }
+        
+         
+            }
+            
+            %>
+            
+           
+
+        
+   
+    
+    
+    
+</div>
 <jsp:include page="includes/footer.jsp" />

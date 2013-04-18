@@ -28,4 +28,8 @@
         
     
 </div><!-- row -->
+
+
+
+<jsp:include page="includes/log.jsp" />
 <jsp:include page="includes/footer.jsp" />
