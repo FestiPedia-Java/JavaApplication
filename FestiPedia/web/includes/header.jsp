@@ -50,7 +50,7 @@
         <nav class="col col_8">
         	<ul class="top_menu">
             	
-                <li><a href="#" >Festivals</a></li>
+                <li><a href="festival.jsp" >Festivals</a></li>
                 <li><a href="bands.jsp" >Bands</a></li>
             	
             </ul>
