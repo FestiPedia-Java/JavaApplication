@@ -1,8 +1,10 @@
 <%-- 
-    Document   : bands
-    Created on : 21-mrt-2013, 15:22:54
-    Author     : Groep 15
+    Document   : Festival
+    Created on : 18-apr-2013, 13:20:37
+    Author     : Bram
 --%>
+
+
 <jsp:include page="includes/header.jsp" />
 <%@page import="java.sql.*" %>
 <%@page import="java.io.*" %>
@@ -13,21 +15,21 @@
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
                 Connection connection = DriverManager.getConnection(connectionURL, "root", "");
                 Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT * FROM Bands");
+                ResultSet rs = statement.executeQuery("SELECT * FROM Festivals");
                  
 %>
 <div class="row inhoud"><!-- Content -->
-    <div class="col col_16" > <h1>Bands</h1></div>
-    <div class="col col_7 tabs" >
-        <div class="col-inhoud">
-            <h3>Upcoming Bands</h3>
+
+	 <div class="col col_16" > <h1>Upcoming Festivals</h1></div> 
+        <div class="col col_7 tabs" ><div class="col-inhoud">
+                
 <%
 while(rs.next())
 {
-String bandName = rs.getString("band_naam");
-String bandMusic = rs.getString("band_soortMuziek");
-String bandUrl = rs.getString("band_url");
-out.println("<a href= bandUrl>" + bandName  + "</a> </br>");
+String FestivalName = rs.getString("fest_naam");
+String FestivalLocation = rs.getString("fest_locatie");
+String FestivalDate = rs.getString("fest_datum");
+out.println(  FestivalName  + " "+ FestivalLocation + " "+ FestivalDate +" </br>");
 }
     
 
@@ -37,14 +39,14 @@ out.println("<a href= bandUrl>" + bandName  + "</a> </br>");
         out.println("fout shit");
     }
 %>
-        </div>        
-    </div>
+
+            </div></div>
     <div class="col col_7 tabs" >
         <div class="col-inhoud">
-            <h3>Suggestions</h3>
-            test2
-        </div>        
-    </div>
+            
+       test2
+        
+         </div></div>
         
     
 </div><!-- row -->
