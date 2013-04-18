@@ -3,8 +3,14 @@
     Created on : 21-mrt-2013, 15:22:54
     Author     : Groep 15
 --%>
-<%! String siteNaam = "Home"; %>  
-<jsp:include page="includes/header.jsp" />
+<%! String siteNaam = "Home"; %> 
+
+
+<jsp:include page="includes/header.jsp" >
+   <jsp:param name="siteNaam" value="Home" />  
+</jsp:include> 
+
+
 <div class="row inhoud"><!-- Content -->
 
 	 <div class="col col_16" > <h1>Home</h1></div> 

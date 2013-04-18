@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset=utf-8>
-    <title>| FestiPedia</title>
+    <title>${param.siteNaam} | FestiPedia</title>
     
     <script src="js/modernizr-1.7.min.js"></script><!-- this is the javascript allowing html5 to run in older browsers -->
     
