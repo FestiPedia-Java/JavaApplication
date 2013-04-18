@@ -34,6 +34,30 @@
      <script src="js/jquery-bpop.js"></script>
      <script src="js/validator.js"></script>
      
+     <script type="text/javascript">
+  ;(function($) {
+
+         // DOM Ready
+        $(function() {
+
+           
+
+                  $('#admin-knop').bind('click', function(e) {
+
+                // Prevents the default action to be triggered. 
+                e.preventDefault();
+
+                // Triggering bPopup when click event is fired
+                $('#login-panel').bPopup();
+
+            });
+
+        });
+
+    })(jQuery);
+</script>
+
+     
  <link rel="shortcut icon" href="/images/icon.png">
     </head>
 
