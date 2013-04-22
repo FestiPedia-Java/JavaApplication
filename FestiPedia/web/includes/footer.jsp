@@ -36,7 +36,7 @@
                  //out.println("rs1 if false ");
                  int klik = 1;             
                  
-                 statement.executeQuery("INSERT INTO ips VALUES(" + ip + "," + klik + ")");
+                 statement.executeUpdate("INSERT INTO ips (ip, stie_knliks) VALUES(" + ip + "," + klik + ")");
                
                  out.println("rs1 if done ");
                 }
