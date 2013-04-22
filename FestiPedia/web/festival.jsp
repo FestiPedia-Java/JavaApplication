@@ -26,10 +26,10 @@
 <%
 while(rs.next())
 {
-String FestivalName = rs.getString("fest_naam");
-String FestivalLocation = rs.getString("fest_locatie");
-String FestivalDate = rs.getString("fest_datum");
-out.println(  FestivalName  + " "+ FestivalLocation + " "+ FestivalDate +" </br>");
+String festName = rs.getString("fest_naam");
+String festLocation = rs.getString("fest_locatie");
+String festDate = rs.getString("fest_datum");
+out.println(  festName  + " "+ festLocation + " "+ festDate +" </br>");
 }
     
 
