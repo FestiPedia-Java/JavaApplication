@@ -110,7 +110,7 @@ public class Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_searchActionPerformed
     
     public static boolean validateUrl(String url) {
-        return url.matches("((https?://)?localhost){1}([a-zA-Z0-9]*)?/?([a-zA-Z0-9\\-\\._\\?\\,\\'/\\\\\\+&amp;%\\$#\\=~])*");
+        return url.matches("((https?://)?localhost){1}([a-zA-Z0-9]*)?/?([a-zA-Z0-9\\:\\-\\._\\?\\,\\'/\\\\\\+&amp;%\\$#\\=~])*");
     }
     
     public static boolean checkLine(String line){
