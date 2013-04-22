@@ -7,8 +7,7 @@
 <jsp:include page="includes/header.jsp" >
    <jsp:param name="siteNaam" value="Festivals" />  
 </jsp:include> 
-<%@page import="java.sql.*" %>
-<%@page import="java.io.*" %>
+
 
 <%
     try{

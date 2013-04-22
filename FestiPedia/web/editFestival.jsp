@@ -11,8 +11,6 @@
 </jsp:include> 
 
 
-<%@page import="java.sql.*" %>
-<%@page import="java.io.*" %>
 
 <div class="row inhoud"><!-- Content -->
 

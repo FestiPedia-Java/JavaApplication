@@ -8,12 +8,7 @@
 
 <jsp:include page="includes/header.jsp" >
    <jsp:param name="siteNaam" value="Admin" />  
-</jsp:include> 
-
-
-<%@page import="java.sql.*" %>
-<%@page import="java.io.*" %>
-
+</j
 <div class="row inhoud"><!-- Content -->
 
 	 <div class="col col_16" > <h1>Admin Panel</h1></div> 
