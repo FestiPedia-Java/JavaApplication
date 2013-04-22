@@ -22,6 +22,8 @@ public class Bands {
         this.musicStyle = musicStyle;
         this.url = url;
     }
+    
+    public Bands(){}
 
     //getters
     public int getId() {
