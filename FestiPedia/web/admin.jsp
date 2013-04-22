@@ -4,7 +4,8 @@
     Author     : Groep 15
 --%>
 
-
+<%@page import="java.sql.*" %>
+    <%@page import="java.io.*" %>
 
 
 <jsp:include page="includes/header.jsp" >
@@ -20,7 +21,7 @@
                 
                 <form action="editFestival.jsp" method="post">
                     
-                    <select>
+                    <select name="festival">
                         
                         <%
     try{

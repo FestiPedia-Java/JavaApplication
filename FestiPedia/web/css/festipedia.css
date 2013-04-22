@@ -349,3 +349,16 @@ font: 13.3px/1.7 "Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
        width:200px;
        margin-top:10px;
    }
+   
+   .edit td{
+       min-width:100px
+   }
+   
+   .edit input{
+       width:300px;
+   }
+   
+   .readonly{
+      background-color:#ccc !important; 
+       
+   }

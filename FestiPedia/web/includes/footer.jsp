@@ -34,8 +34,10 @@
                 }
                 else{
                  out.println("rs1 if false ");
+                 String query2 = "INSERT INTO ips VALUES(1,1)";
                  
-                 statement.executeQuery("INSERT into ips VALUES('"+ ip + "',0)");
+                 
+                 statement.executeQuery(query2);
                
                  out.println("rs1 if done ");
                 }
