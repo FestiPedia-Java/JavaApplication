@@ -37,6 +37,8 @@
         if(myname!=null)
             {
              out.println("<p>U ben ingelogd als  " + myname + "  , <a href=\"logout.jsp\" >Logout?!</a></p>");
+            out.println("<p>Ga door naar het <a href=\"admin.jsp\" >Admin Panel</a></p>");
+          
             }
         else 
             {

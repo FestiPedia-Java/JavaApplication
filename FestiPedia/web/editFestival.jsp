@@ -1,5 +1,5 @@
 <%-- 
-    Document   : Admin
+    Document   : editFest
     Created on : 21-mrt-2013, 15:22:54
     Author     : Groep 15
 --%>
@@ -7,7 +7,7 @@
 
 
 <jsp:include page="includes/header.jsp" >
-   <jsp:param name="siteNaam" value="Admin" />  
+   <jsp:param name="siteNaam" value="Edit" />  
 </jsp:include> 
 
 
@@ -31,7 +31,7 @@
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
                 Connection connection = DriverManager.getConnection(connectionURL, "root", "");
                 Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT * FROM festivals");
+                ResultSet rs = statement.executeQuery("SELECT * FROM festivals where fest_naam = " + iets);
                  
 %>
 
