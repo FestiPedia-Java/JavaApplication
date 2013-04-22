@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +17,7 @@ public class Gui extends javax.swing.JFrame {
 
     public Gui() {
         initComponents();
+        List<String> CheckedUrls = new ArrayList();
     }
 
     /**
@@ -76,37 +80,12 @@ public class Gui extends javax.swing.JFrame {
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         String urlText = urlField.getText();
-        
         if(!validateUrl(urlText)){
             error.setText("This url is not located on the localhost.");
         }else{
+            iterateLinks(urlText);
             error.setText("");
-            String line;
-            String webpage = "";
-            try {
-                URL url = new URL(urlText);
-                BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-                while ((line = br.readLine()) != null) {  
-                    // Do something with the line
-                    if(checkLine(line)){
-                        String[] parts = line.split("a href=\"");
-                        for(int i=0; i<parts.length; i++){
-                            if(parts[i].matches("h.*")){
-                                    parts[i] = parts[i].substring(0, parts[i].indexOf("\""));
-                                webText.append(parts[i].trim());
-                                webText.append("\n");
-                            }
-                        }
-                    }
-                }
-                br.close(); 
-            } catch (MalformedURLException ex) {
-                Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        }     
+        }
     }//GEN-LAST:event_searchActionPerformed
     
     public static boolean validateUrl(String url) {
@@ -115,6 +94,39 @@ public class Gui extends javax.swing.JFrame {
     
     public static boolean checkLine(String line){
         return line.matches("(.)*(<a href=){1}(.)*");
+    }
+    
+    public void iterateLinks(String urlText){
+        
+        String line, link;
+        List<String> localUrls = new ArrayList();
+        
+        try {
+            URL url = new URL(urlText);
+            //kan niet ingelezen worden bij bv. localhost:8080
+            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+            while ((line = br.readLine()) != null) {  
+                // Do something with the line
+                if(checkLine(line)){
+                    String[] parts = line.split("a href=\"");
+                    for(int i=0; i<parts.length; i++){
+                        if(parts[i].matches("h.*")){
+                            link = parts[i].substring(0, parts[i].indexOf("\""));
+                            if(validateUrl(link)){
+                                localUrls.add(link);
+                                webText.append(link);
+                                webText.append("\n");
+                            }
+                        }
+                    }
+                }
+            }
+            br.close(); 
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
     
     public static void main(String args[]) {
