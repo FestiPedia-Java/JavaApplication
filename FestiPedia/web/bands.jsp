@@ -10,7 +10,7 @@
    
     <%@page import="java.sql.*" %>
     <%@page import="java.io.*" %>
-    <%@page import="/com/Bands.java" %>
+    <%@page import="com.Festipedia.Bands" %>
 
 <%
     try{
@@ -27,15 +27,17 @@
         <div class="col-inhoud">
             <h3>Upcoming Bands</h3>
 <%
-    Bands b = new Bands();
+    Bands b;
                 
-while(rs.next())
-{
-String bandName = rs.getString("band_naam");
-String bandMusic = rs.getString("band_soortMuziek");
-String bandUrl = rs.getString("band_url");
-out.println("<a href= bandUrl>" + bandName  + "</a> </br>");
-}
+    while(rs.next())
+        {
+        b = new Bands();
+        b.setId(rs.getInt("band_id"));
+        b.setName(rs.getString("band_naam"));
+        b.setMusicStyle(rs.getString("band_soortMuziek"));
+        b.setUrl(rs.getString("band_url"));
+        out.println("<a href=b.getUrl>" + b.getName()  + "</a> </br>");
+        }
     
 
         connection.close();
