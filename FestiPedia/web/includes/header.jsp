@@ -89,15 +89,14 @@
 	
      <ul id="nav">
     <li>
-        <a href="#">Home</a>
-    </li>
+        <a href="index.jsp">Home</a>
 
     <li>
         <a href="#">Info</a>
         <ul>
-            <li><a href="#">Festivals</a></li>
+            <li><a href="festival.jsp">Festivals</a></li>
 
-            <li><a href="#">Bands</a></li>
+            <li><a href="bands.jsp">Bands</a></li>
         </ul>
     </li>
          <li>
