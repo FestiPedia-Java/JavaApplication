@@ -11,6 +11,47 @@
 
 </footer>
 
+    <%@page import="java.sql.*" %>
+    <%@page import="java.io.*" %>
+    <%
+     try{
+                String connectionURL = "jdbc:mysql://localhost:3306/groep15_festivals?zeroDateTimeBehavior=convertToNull";
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+                Statement statement = connection.createStatement();
+                
+                String ip = request.getRemoteAddr();
+                out.println(ip);
+                ResultSet rs1 = statement.executeQuery("SELECT * from ips where ip='"+ip+"'");
+                out.println("gelukt");
+                if(rs1.next()){
+                    out.println("rs1 if true");
+                    int kliks = rs1.getInt("site_kliks");
+                    kliks++;
+                    
+                    statement.executeQuery("Update ips SET site_kliks=" + kliks +"where ip='"+ ip + "'");
+                    
+                }
+                else{
+                 out.println("rs1 if false ");
+                 
+                 statement.executeQuery("INSERT into ips VALUES('"+ ip + "',0)");
+               
+                 out.println("rs1 if done ");
+                }
+                
+                
+               
+              
+    
+
+        connection.close();
+    }catch(Exception e){
+        
+         out.println("Connectie Fout");
+    }
+%>
+
 
 </body>
 </html>

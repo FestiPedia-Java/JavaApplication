@@ -8,7 +8,8 @@
    <jsp:param name="siteNaam" value="Festivals" />  
 </jsp:include> 
 
-
+    <%@page import="java.sql.*" %>
+    <%@page import="java.io.*" %>
 <%
     try{
                 String connectionURL = "jdbc:mysql://localhost:3306/groep15_festivals?zeroDateTimeBehavior=convertToNull";

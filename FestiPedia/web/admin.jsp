@@ -6,9 +6,11 @@
 
 
 
+
 <jsp:include page="includes/header.jsp" >
    <jsp:param name="siteNaam" value="Admin" />  
-</j
+</jsp:include> 
+
 <div class="row inhoud"><!-- Content -->
 
 	 <div class="col col_16" > <h1>Admin Panel</h1></div> 
@@ -28,9 +30,7 @@
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT * FROM festivals");
                  
-%>
 
-<%
 while(rs.next())
 {
 String festName = rs.getString("fest_naam");
