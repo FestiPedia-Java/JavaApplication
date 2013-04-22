@@ -10,5 +10,6 @@
         <property name="name" type="string" column="band_naam"/>
         <property name="musicStyle" type="string" column="band_soortMuziek"/>
         <property name="url" type="string" column="band_url"/>
+    
     </class>
 </hibernate-mapping>

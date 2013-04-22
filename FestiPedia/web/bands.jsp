@@ -10,6 +10,7 @@
    
     <%@page import="java.sql.*" %>
     <%@page import="java.io.*" %>
+    <%@page import="/com/Bands.java" %>
 
 <%
     try{
@@ -26,6 +27,8 @@
         <div class="col-inhoud">
             <h3>Upcoming Bands</h3>
 <%
+    Bands b = new Bands();
+                
 while(rs.next())
 {
 String bandName = rs.getString("band_naam");
