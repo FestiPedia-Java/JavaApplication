@@ -1,5 +1,5 @@
 <%-- 
-    Document   : Festival
+    Document   : festival
     Created on : 18-apr-2013, 13:20:37
     Author     : Bram
 --%>
@@ -36,7 +36,7 @@ out.println(  FestivalName  + " "+ FestivalLocation + " "+ FestivalDate +" </br>
         connection.close();
     }catch(Exception e){
         
-        out.println("fout shit");
+        out.println("Geen Database connectie");
     }
 %>
 
