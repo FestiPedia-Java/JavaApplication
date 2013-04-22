@@ -4,8 +4,9 @@
     Author     : Bram
 --%>
 
-
-<jsp:include page="includes/header.jsp" />
+<jsp:include page="includes/header.jsp" >
+   <jsp:param name="siteNaam" value="Festivals" />  
+</jsp:include> 
 <%@page import="java.sql.*" %>
 <%@page import="java.io.*" %>
 
@@ -50,4 +51,5 @@ out.println(  FestivalName  + " "+ FestivalLocation + " "+ FestivalDate +" </br>
         
     
 </div><!-- row -->
+<jsp:include page="includes/log.jsp" />
 <jsp:include page="includes/footer.jsp" />

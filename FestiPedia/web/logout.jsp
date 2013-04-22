@@ -6,7 +6,7 @@
 
 
 <jsp:include page="includes/header.jsp" >
-   <jsp:param name="siteNaam" value="Login" />  
+   <jsp:param name="siteNaam" value="Logout" />  
 </jsp:include> 
 
 
@@ -38,4 +38,5 @@
         
     
 </div><!-- row -->
+<jsp:include page="includes/log.jsp" />
 <jsp:include page="includes/footer.jsp" />

@@ -3,7 +3,9 @@
     Created on : 21-mrt-2013, 15:22:54
     Author     : Groep 15
 --%>
-<jsp:include page="includes/header.jsp" />
+<jsp:include page="includes/header.jsp" >
+   <jsp:param name="siteNaam" value="Bands" />  
+</jsp:include> 
 <%@page import="java.sql.*" %>
 <%@page import="java.io.*" %>
 
@@ -48,4 +50,5 @@ out.println("<a href= bandUrl>" + bandName  + "</a> </br>");
         
     
 </div><!-- row -->
+<jsp:include page="includes/log.jsp" />
 <jsp:include page="includes/footer.jsp" />
