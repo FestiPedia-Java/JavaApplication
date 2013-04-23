@@ -114,7 +114,9 @@
     
 </ul>
 
-<div id="search-div"><form name="search" method="post"> <input type="text" placeholder="Search"/></form> </div>
+<div id="search-div"><form name="search" method="post">
+        <input type="text" placeholder="Search" name="zoek"/>
+    <input type="submit" name="doezoek" class="zoekknop" value=""></form> </div>
         
     
 </div><!-- row -->

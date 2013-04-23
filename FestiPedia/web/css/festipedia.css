@@ -462,3 +462,15 @@ background: -o-linear-gradient(center top, #c30100 0%, #800300 100%);
 .save-tabel tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;
 }
+
+.zoekknop {
+border: none;
+background-color: transparent;
+background-image: url(../images/search.png);
+background-repeat: no-repeat;
+margin-left: -29px;
+margin-top: 0px;
+height: 29px;
+width: 29px;
+cursor: pointer;
+}
