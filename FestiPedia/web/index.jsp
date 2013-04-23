@@ -17,6 +17,7 @@
         
         <div id="indexLeftColumn">
         <div id="welcomeText">
+            <!-- geeft greeting in jouw taal -->
         <p style="font-size: larger"><fmt:message key='greeting'/></p>
 
         </div>
@@ -25,6 +26,7 @@
     <div class="col col_7 tabs" >
         <div class="col-inhoud">
         <div id="welcomeText">  
+              <!-- geeft intro tekst in jouw taal -->
         <p><fmt:message key='introText'/></p>
         </div>
         </div>
