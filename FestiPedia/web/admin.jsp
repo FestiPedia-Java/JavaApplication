@@ -24,6 +24,13 @@
 
 	 <div class="col col_16" > <h1>Admin Panel</h1></div>
          
+         <% 
+             
+             if(session.getAttribute("username") == null) {
+                 out.println(" <div class='col col_16' > <h1>You dont belong here, log in!</h1></div>");
+             }else{
+             %>
+         
          
            <%
                // controleren of de persoon van een edit pagina komt, anders moet deze code niet uitgevoerd worden
@@ -171,7 +178,7 @@ out.println(" <option value='"+festId+"'> "+festName+"</option>");
          </div></div>
 
        
-        
+   <% } %>     
     
 </div><!-- row -->
 
