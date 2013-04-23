@@ -3,7 +3,7 @@
     Created on : Apr 18, 2013, 9:29:14 AM
     Author     : roep 16
 --%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -60,49 +60,20 @@
      
  <link rel="shortcut icon" href="/images/icon.png">
  
- <div class="headerWidget">
-
-         <c:choose>
-      <c:when test="${pageContext.request.locale.language ne 'nl'}">
-          english
-      </c:when>
-      <c:otherwise>
-        <c:url var="url" value="chooseLanguage">
-          <c:param name="language" value="en"/>
-        </c:url>
-        <div class="bubble"><a href="${url}">english</a></div>
-      </c:otherwise>
-    </c:choose> |
-
-    <c:choose>
-      <c:when test="${pageContext.request.locale.language eq 'nl'}">
-          nederlands
-      </c:when>
-      <c:otherwise>
-        <c:url var="url" value="chooseLanguage">
-          <c:param name="language" value="nl"/>
-        </c:url>
-        <div class="bubble"><a href="${url}">nederlands</a></div>
-      </c:otherwise>
-    </c:choose>
-        </div>
-    </head>
+</head>
 
 <body>
     
     <%@page import="java.sql.*" %>
     <%@page import="java.io.*" %>
+    <%@page import="java.util.ResourceBundle" %>
+    <%@page import="java.util.*" %>
 
         
 
 	<header class="row"> 
         
-       <%-- Language test --%>
-    <p style="text-align: left;"><strong>tests:</strong>
-        <br>
-        <code>\${pageContext.request.locale.language}</code>: ${pageContext.request.locale.language}
-    </p>
-<!--tot  hier language support-->
+  
         <div class="col col_8" ><img class="logo" src="images/red.png" alt="Site-logo"/> </div><!-- logo col_7 -->
         
         <nav class="col col_8">
