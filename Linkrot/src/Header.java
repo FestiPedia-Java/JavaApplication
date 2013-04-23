@@ -96,7 +96,7 @@ public class Header {
                                         getWebpage(link);
                                     } else {}
                                 }else{
-                                    brokenUrls.add(link + " \n\tFROM " + url + "\n");     
+                                    brokenUrls.add("Broken link:\t" + link + " \n\tOn page:\t " + url + "\n\n");     
                                 }
                             }
                         }

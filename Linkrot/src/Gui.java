@@ -116,6 +116,8 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        webText.setText(null);
+        brokenLinks.setText(null);
         String urlText = urlField.getText();
         if(!h1.validateUrl(urlText) || !h1.urlExists(urlText)){
             error.setText("This url is not located on the localhost.");
@@ -134,107 +136,6 @@ public class Gui extends javax.swing.JFrame {
            
         }
     }//GEN-LAST:event_searchActionPerformed
-    
-    /**
-     * Controleren of het een lokale url is.
-     * @param url
-     * @return 
-     */
-                    /*public static boolean validateUrl(String url) {
-                        return url.matches("((https?://)?localhost){1}([a-zA-Z0-9]*)?/?([a-zA-Z0-9\\:\\-\\._\\?\\,\\'/\\\\\\+&amp;%\\$#\\=~])*");
-                    }*/
-    
-    /**
-     * Zoekt of er urls op die regel staan.
-     * @param line
-     * @return 
-     */
-    /*public static boolean checkLine(String line){
-        return line.matches("(.)*(<a href=){1}(.)*");
-    }
-    
-    public boolean notYetChecked(String url){
-        for(String s:checkedUrls){
-            if(url.equals(s)) return false;
-        }
-        return true;
-    }*/
-    
-                    /*public static boolean checkIfURLExists(String targetUrl) {
-                        HttpURLConnection httpUrlConn;
-                        try {
-                            httpUrlConn = (HttpURLConnection) new URL(targetUrl)
-                                    .openConnection();
-
-                            httpUrlConn.setRequestMethod("HEAD");
-
-                            // Set timeouts in milliseconds
-                            httpUrlConn.setConnectTimeout(30000);
-                            httpUrlConn.setReadTimeout(30000);
-
-                            // Print HTTP status code/message for your information.
-                            System.out.println("Response Code: "
-                                    + httpUrlConn.getResponseCode());
-                            System.out.println("Response Message: "
-                                    + httpUrlConn.getResponseMessage() +" - " + targetUrl);
-
-                            return (httpUrlConn.getResponseCode() == HttpURLConnection.HTTP_OK);
-                        } catch (Exception e) {
-                            System.out.println("Error: " + e.getMessage());
-                            return false;
-                        }
-                    }*/
-    
-    /**
-     * Zoekt alle urls op een webpagina.
-     * @param urlText 
-     */
-    /*
-    public void iterateLinks(String urlText){
-        
-        String line, link;
-        List<String> links = new ArrayList();
-        
-        try {
-            URL url = new URL(urlText);
-            //webpagina inlezen
-            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-            
-            //url toevoegen aan de lijst met reeds gecontroleerde url's
-            checkedUrls.add(urlText);
-            
-            //over de lijnen van de webpagina itereren
-            while ((line = br.readLine()) != null) { 
-                //System.out.println(line);
-                if(checkLine(line)){
-                    //Er staat een url op deze lijn
-                    String[] parts = line.split("a href=\"");
-                    for(int i=0; i<parts.length; i++){
-                        if(parts[i].matches("http.*")){
-                            
-                            //verwijderen van tekst die nog achter de link staat.
-                            link = parts[i].substring(0, parts[i].indexOf("\""));
-                            
-                            if(validateUrl(link) && notYetChecked(link) && !link.matches("(.)*.pdf")){
-                                //is een lokale url die nog niet gecontroleerd is
-                                if(checkIfURLExists(link)){
-                                    webText.append(link + "\n");
-                                    iterateLinks(link);    
-                                } else {
-                                    brokenLinks.append(link + " \n\tFROM " + urlText + "\n");
-                                } 
-                            }
-                        }
-                    }
-                }
-            }
-            br.close(); 
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-    }*/
     
     public static void main(String args[]) {
         /* Create and display the form */
