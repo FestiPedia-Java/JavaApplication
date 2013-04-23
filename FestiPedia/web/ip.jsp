@@ -28,7 +28,7 @@
 %>
 <div class="row inhoud"><!-- Content -->
     <div class="col col_16" > 
-        <h1>Visisitor Information</h1>
+        <h1>Visitors Information</h1>
     </div>
     <div class="col col_16" >
         
