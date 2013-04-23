@@ -5,9 +5,14 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Header {
-    List<String> checkedUrls = new ArrayList();
-    List<String> brokenUrls = new ArrayList();
+public class Header implements Runnable{
+    private List<String> checkedUrls = new ArrayList();
+    private List<String> brokenUrls = new ArrayList();
+    private String theUrl;
+    
+    public void run(){
+        getWebpage(theUrl);
+    }
     
     /**
      * valideert of de url een lokale url is.
@@ -76,7 +81,7 @@ public class Header {
      * @param url 
      * @return 
      **/
-    public List[] getWebpage(String url) {
+    public List[] getWebpage(String url){
             List[] alleUrls = new List[2];
             String address = "127.0.0.1";
             int port = 80;
@@ -126,8 +131,10 @@ public class Header {
                                 if(urlExists(link)){
                                 //De url is een werkende url
                                     if(validateUrl(link) && notYetChecked(link) && !link.matches("(.)*.(pdf|jpg|png)")){
-                                    //link is een lokale url die nog niet gecontroleerd is.    
-                                        getWebpage(link);
+                                    //link is een lokale url die nog niet gecontroleerd is.
+                                        theUrl = link;
+                                        Thread t = new Thread();
+                                        t.start();
                                     } else {}
                                 }else{
                                 //deze url is "broken"    

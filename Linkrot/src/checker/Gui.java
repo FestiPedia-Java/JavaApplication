@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class Gui extends javax.swing.JFrame {
 
-    List<String> checkedUrls = new ArrayList();
-    Header h1 = new Header();
+    private List<String> checkedUrls = new ArrayList();
+    private Header h1 = new Header();
     
     public Gui() {
         super("Linkrot checker");
