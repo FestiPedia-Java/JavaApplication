@@ -22,21 +22,21 @@
                 
                 String ip = request.getRemoteAddr();
                 out.println(ip);
-                ResultSet rs1 = statement.executeQuery("SELECT * from ips where ip=" + ip);
+                ResultSet rs1 = statement.executeQuery("SELECT * from ips where ip='" + ip + "'");
                 out.println("gelukt");
                 if(rs1.next()){
-                    //out.println("rs1 if true");
+                    out.println("rs1 if true");
                     int kliks = rs1.getInt("site_kliks");
                     kliks++;
-                    
-                    statement.executeQuery("Update ips SET site_kliks=" + kliks +"where ip="+ ip );
-                    
+                     out.println(kliks);
+                    statement.executeUpdate("Update ips SET site_kliks=" + kliks +"where ip='"+ ip +"'" );
+                     out.println(kliks);
                 }
                 else{
-                 //out.println("rs1 if false ");
+                 out.println("rs1 if false ");
                  int klik = 1;             
                  
-                 statement.executeUpdate("INSERT INTO ips (ip, site_kliks) VALUES (" + ip + "," + klik + ")");
+                 statement.executeUpdate("INSERT INTO ips (ip, site_kliks) VALUES ('" + ip + "'," + klik + ")");
                
                  out.println("rs1 if done ");
                 }

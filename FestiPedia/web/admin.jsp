@@ -58,7 +58,7 @@ out.println(" <option value='"+festId+"'> "+festName+"</option>");
     <div class="col col_7 tabs" >
         <div class="col-inhoud">
             
-            <h2>Edit a band </h2>
+            <h2>Add a Festival</h2>
             
             <p> Will be added in the future </p>
         
