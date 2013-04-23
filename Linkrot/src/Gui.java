@@ -35,6 +35,11 @@ public class Gui extends javax.swing.JFrame {
         error = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         webText = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        brokenLinks = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,32 +54,61 @@ public class Gui extends javax.swing.JFrame {
         webText.setRows(5);
         jScrollPane1.setViewportView(webText);
 
+        brokenLinks.setColumns(20);
+        brokenLinks.setRows(5);
+        jScrollPane2.setViewportView(brokenLinks);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Broken links:");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Checked URL's");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Enter URL");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(error)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
                     .addComponent(urlField)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(error)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(search)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(search))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(urlField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(search)
-                    .addComponent(error))
+                .addComponent(search)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(error)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -83,7 +117,7 @@ public class Gui extends javax.swing.JFrame {
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         String urlText = urlField.getText();
-        if(!validateUrl(urlText)){
+        if(!validateUrl(urlText) || !checkIfURLExists(urlText)){
             error.setText("This url is not located on the localhost.");
         }else{
             iterateLinks(urlText);
@@ -159,21 +193,25 @@ public class Gui extends javax.swing.JFrame {
             checkedUrls.add(urlText);
             
             //over de lijnen van de webpagina itereren
-            while ((line = br.readLine()) != null) {  
+            while ((line = br.readLine()) != null) { 
+                //System.out.println(line);
                 if(checkLine(line)){
                     //Er staat een url op deze lijn
                     String[] parts = line.split("a href=\"");
                     for(int i=0; i<parts.length; i++){
-                        if(parts[i].matches("h.*")){
+                        if(parts[i].matches("http.*")){
                             
                             //verwijderen van tekst die nog achter de link staat.
                             link = parts[i].substring(0, parts[i].indexOf("\""));
                             
-                            if(validateUrl(link) && notYetChecked(link) && !link.matches("(.)*.pdf") && checkIfURLExists(link)){
+                            if(validateUrl(link) && notYetChecked(link) && !link.matches("(.)*.pdf")){
                                 //is een lokale url die nog niet gecontroleerd is
-                                    webText.append(link);
-                                    webText.append("\n");
-                                    links.add(link);                                  
+                                if(checkIfURLExists(link)){
+                                    webText.append(link + "\n");
+                                    iterateLinks(link);    
+                                } else {
+                                    brokenLinks.append(link + " \n\tFROM " + urlText + "\n");
+                                } 
                             }
                         }
                     }
@@ -185,10 +223,6 @@ public class Gui extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
         } 
-        
-        for(int i =0; i< links.size(); i++){
-            iterateLinks(links.get(i));
-        }
     }
     
     public static void main(String args[]) {
@@ -200,8 +234,13 @@ public class Gui extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea brokenLinks;
     private javax.swing.JLabel error;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton search;
     private javax.swing.JTextField urlField;
     private javax.swing.JTextArea webText;
