@@ -7,6 +7,5 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost/groep15_festivals</property>
     <property name="hibernate.connection.username">root</property>
     <mapping resource="com/Festipedia/hibernate.hbm.xml"/>
-    <mapping/>
   </session-factory>
 </hibernate-configuration>

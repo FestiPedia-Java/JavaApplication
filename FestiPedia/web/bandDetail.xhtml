@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+    xmlns:f="http://java.sun.com/jsf/core" 
+    xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
     <title>${param.siteNaam} | FestiPedia</title>
     
@@ -53,7 +54,6 @@
     <link rel="shortcut icon" href="/images/icon.png"/>
     </h:head>
     <h:body>
-        
     <header class="row"> 
         <div class="col col_8" ><img class="logo" src="images/red.png" alt="Site-logo"/> </div><!-- logo col_7 -->
         <nav class="col col_8">
@@ -70,12 +70,11 @@
         <ul id="nav">
             <li>
                 <a href="index.jsp">Home</a>
-
+            </li>
             <li>
                 <a href="#">Info</a>
                 <ul>
                     <li><a href="festival.jsp">Festivals</a></li>
-
                     <li><a href="bands.jsp">Bands</a></li>
                 </ul>
             </li>
@@ -98,7 +97,12 @@
         <div class="col col_16" > <h1>Bands</h1></div>
         <div class="col col_16" >
             <div class="col-inhoud">
-            <h3>Upcoming Bands</h3>
+            <h3></h3>
+            
+            <f:view>
+                <h:commandButton value="test"/>
+            </f:view>
+            
             </div>
         </div>
         </div>
@@ -113,4 +117,4 @@
     </footer>
     
     </h:body>
-</html
+</html>
