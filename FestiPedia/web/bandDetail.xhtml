@@ -1,9 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core" 
     xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>${param.siteNaam} | FestiPedia</title>
     
     <script src="js/modernizr-1.7.min.js"></script><!-- this is the javascript allowing html5 to run in older browsers -->
@@ -54,6 +56,12 @@
     <link rel="shortcut icon" href="/images/icon.png"/>
     </h:head>
     <h:body>
+            <f:view>
+                <h:form>
+                    <h:commandButton value="test"/>
+                </h:form>
+                
+            </f:view>
     <header class="row"> 
         <div class="col col_8" ><img class="logo" src="images/red.png" alt="Site-logo"/> </div><!-- logo col_7 -->
         <nav class="col col_8">
@@ -94,15 +102,28 @@
     <!-- bandDetail -->
     
         <div class="row inhoud"><!-- Content -->
-        <div class="col col_16" > <h1>Bands</h1></div>
+        <div class="col col_16" > <h1>Band detail</h1></div>
         <div class="col col_16" >
             <div class="col-inhoud">
-            <h3></h3>
-            
+
+            <ui:insert>
             <f:view>
-                <h:commandButton value="test"/>
+            <h3>                
+                <h:form>
+                    <h:outputText value="#{data.getBandName(param.id)}"/>
+                </h:form>
+            </h3>
+                <h5>Genre:</h5>
+                <h:form>
+                    <h:outputText value="#{data.getBandGenre(param.id)}"/>
+                </h:form>
+                
+                <h5>Website:</h5>
+                <h:form>
+                    <h:outputText value="#{data.getBandUrl(param.id)}"/>
+                </h:form>
             </f:view>
-            
+            </ui:insert>
             </div>
         </div>
         </div>

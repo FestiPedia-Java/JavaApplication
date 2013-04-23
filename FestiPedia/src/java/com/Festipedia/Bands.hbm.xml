@@ -3,13 +3,13 @@
 <hibernate-mapping>
     <class name="com.Festipedia.Bands" catalog="groep15_festivals" table="bands">
         
-        <id name="bandId" type="java.lang.Integer" column="band_id">
+        <id name="id" type="java.lang.Integer" column="band_id">
             <generator class="identity" />
         </id>
         
-        <property name="bandName" type="string" column="band_naam"/>
-        <property name="bandMusicStyle" type="string" column="band_soortMuziek"/>
-        <property name="bandUrl" type="string" column="band_url"/>
+        <property name="name" type="string" column="band_naam"/>
+        <property name="musicStyle" type="string" column="band_soortMuziek"/>
+        <property name="url" type="string" column="band_url"/>
     
     </class>
 </hibernate-mapping>

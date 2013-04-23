@@ -52,7 +52,7 @@
         b.setName(rs.getString("band_naam"));
         b.setMusicStyle(rs.getString("band_soortMuziek"));
         b.setUrl(rs.getString("band_url"));
-        out.println("<a href=bandDetail.xhtml>" + b.getName()  + "</a> </br>");
+        out.println("<a href=faces/bandDetail.xhtml?id=" + b.getId() + ">" + b.getName()  + "</a> </br>");
         }
     
 

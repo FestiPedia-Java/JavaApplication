@@ -12,15 +12,45 @@ import org.hibernate.Session;
  *
  * @author Ruben
  */
-@ManagedBean
+@ManagedBean(name = "data")
 @SessionScoped
 public class Data {
 
-    private Bands band;
+    private Bands band=null;
     private HibernateUtil helper;
-    private Session session;
+    private Session session =null;
     
-    public String getName(){
-        return "test";
+    private String bandName = "", bandGenre = "", bandUrl = "";
+    
+    public Data(){}
+    
+    
+    
+    public String getBandName(int id){
+        session = helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        band = (Bands)session.get(Bands.class, id);
+        bandName = band.getName();
+        
+        return bandName;
     }
+    
+    public String getBandGenre(int id){
+        session = helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        band = (Bands)session.get(Bands.class, id);
+        bandGenre = band.getMusicStyle();
+        
+        return bandGenre;
+    }
+    
+    public String getBandUrl(int id){
+        session = helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        band = (Bands)session.get(Bands.class, id);
+        bandUrl = band.getUrl();
+        
+        return bandUrl;
+    }
+    
 }
