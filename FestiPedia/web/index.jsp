@@ -5,7 +5,7 @@
 --%>
 
 
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="includes/header.jsp" >
    <jsp:param name="siteNaam" value="Home" />  
 </jsp:include> 
@@ -16,13 +16,18 @@
 	 <div class="col col_16" > <h1>Home</h1></div> 
         <div class="col col_7 tabs" ><div class="col-inhoud">
           
-        test1
+        <div id="welcomeText">
+        <p><fmt:message key='greeting'/></p>
+
+        </div>
             
             </div></div>
     <div class="col col_7 tabs" >
         <div class="col-inhoud">
             
-       test2
+        <div id="welcomeText">
+        <p><fmt:message key='introText'/></p>
+        </div>
         
          </div></div>
         
