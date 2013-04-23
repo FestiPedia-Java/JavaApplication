@@ -3,10 +3,12 @@
     Created on : 21-mrt-2013, 15:22:54
     Author     : Groep 15
 --%>
+
+<!-- Nodig voor SQL en input output te gebruiken -->
 <%@page import="java.sql.*" %>
 <%@page import="java.io.*" %>
 
-
+<!-- header includen met parameter -->
 <jsp:include page="includes/header.jsp" >
    <jsp:param name="siteNaam" value="Edit" />  
 </jsp:include> 
@@ -20,7 +22,7 @@
           
                 <h2> Edit a Festival</h2>
                 
-                <form action="editFestival.jsp" method="post">
+                <form action="admin.jsp" method="post">
                     
                    
                         
@@ -53,24 +55,38 @@
               
                
               ResultSet rs = statement.executeQuery("SELECT max(fest_id) as res FROM festivals");
-              int id = rs.getInt("res");
+            
+              int id = 0;
+              if(rs.next()){
+               id = rs.getInt(1);
+              id++;
+              }
+              
                //toont die lijst alleen de naam invult en geeft die laatste id+1 mee
               out.println("<table class='edit'><tr><td>ID:</td><td> "+
-        "<input type='text' class='readonly' name='festival' value='"+ id +"'  readonly /></td></tr>"+
-       "<tr><td>Name:</td><td> <input type='text' name='naam' value='"+fest_name_add+"' /></td></tr>"+
-        "<tr><td>Location:</td><td> <input type='text' name='locatie'  /></td></tr>"+
-        "<tr><td>Date:</td><td> <input type='text' name='datum'  /></td></tr>"+
-        "<tr><td>Length:</td><td> <input type='text' name='duur'  /></td></tr></table>");
+        "<input type='text' class='readonly' name='id' required='required'  placeholder='id' value='"+ id +"'  readonly /></td></tr>"+
+       "<tr><td>Name:</td><td> <input type='text' class='readonly' required='required' placeholder='Festival Name' name='naam' value='"+fest_name_add+"' readonly /></td></tr>"+
+        "<tr><td>Location:</td><td> <input type='text' name='locatie' placeholder='Location' required='required' /></td></tr>"+
+        "<tr><td>Date:</td><td> <input type='text' name='datum' placeholder='YYYY-MM-DD' required='required' /></td></tr>"+
+        "<tr><td>Length:</td><td> <input type='text' name='duur' placeholder='Days' required='required' /></td></tr></table> "+
+                      "<div class='submit-div'><input type='submit' value='Save' name='saven' class='red edit-knop'/></div>"+
+                        "<div class='aknop-div'><a href='admin.jsp' class='red edit-knop aknop'>Cancel</a></div>");
               }
               
           }else{
           //edit
+              
+              if(request.getParameter("submit") == null ){
+              
+                  out.println("U bent rechstreeks naar deze pagina gekomen, U heeft hier niets te zoeken");
+                  
+              }else{
+              
+              
+              // haalt meegegeven id mee dat verandert moet veranderen
                             
            String fest_id = request.getParameter("festival");   
-           String fest_naam = request.getParameter("naam");
-           String fest_locatie = request.getParameter("locatie");
-           String fest_duur = request.getParameter("duur");
-           String fest_datum = request.getParameter("datum");
+           
                             
                             
     try{
@@ -80,7 +96,7 @@
                 Statement statement = connection.createStatement();
                 
                 
-                
+                // haalt gegevens op van dat festival
                 ResultSet rs = statement.executeQuery("SELECT * FROM festivals where fest_id = " + fest_id );
                  
 %>
@@ -94,15 +110,18 @@ String festLocatie = rs.getString("fest_locatie");
 String festDatum = rs.getString("fest_datum");
 String festDuur = rs.getString("fest_duur");
 
-
+//vult de velden al in zodat je gemakkelijk wijzigingen kan toevoegen
 
 
 out.println("<table class='edit'><tr><td>ID:</td><td> "+
-        "<input type='text' class='readonly' name='festival' value='"+festId+"'  readonly /></td></tr>"+
-       "<tr><td>Name:</td><td> <input type='text' name='naam' value='"+festName+"' /></td></tr>"+
-        "<tr><td>Location:</td><td> <input type='text' name='locatie' value='"+festLocatie+"' /></td></tr>"+
-        "<tr><td>Date:</td><td> <input type='text' name='datum' value='"+festDatum+"' /></td></tr>"+
-        "<tr><td>Length:</td><td> <input type='text' name='duur' value='"+festDuur+"' /></td></tr></table>");
+        "<input type='text' class='readonly' required='required' name='id' value='"+festId+"'  readonly /></td></tr>"+
+       "<tr><td>Name:</td><td> <input type='text' required='required' name='naam' value='"+festName+"' /></td></tr>"+
+        "<tr><td>Location:</td><td> <input type='text' required='required' placeholder='Location' name='locatie' value='"+festLocatie+"' /></td></tr>"+
+        "<tr><td>Date:</td><td> <input type='text' required='required' placeholder='YYYY-MM-DD' name='datum' value='"+festDatum+"' /></td></tr>"+
+        "<tr><td>Length:</td><td> <input type='text' required='required' name='duur' placeholder='Days' value='"+festDuur+"' /></td></tr></table>"+
+        "<div class='submit-div'><input type='submit' value='Save' name='hersaven' class='red edit-knop'/></div>"
+        
+        + "<div class='aknop-div'><a href='admin.jsp' class='red edit-knop aknop'>Cancel</a></div>");
 }
     
 
@@ -111,15 +130,15 @@ out.println("<table class='edit'><tr><td>ID:</td><td> "+
         
         out.println("Connectie Fout");
     }
+              }
     
     
           }
+              
 %>
                   
 
- </br>
-                  
-                    <input type="submit" value="Save" name="saven" class="red edit-knop"/>
+ 
                 </form>
             
             </div></div>
@@ -129,6 +148,6 @@ out.println("<table class='edit'><tr><td>ID:</td><td> "+
 </div><!-- row -->
 
 
-
+<!-- include de log en footer -->
 <jsp:include page="includes/log.jsp" />
 <jsp:include page="includes/footer.jsp" />

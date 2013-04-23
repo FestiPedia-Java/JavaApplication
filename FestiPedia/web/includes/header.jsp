@@ -30,10 +30,12 @@
     <!-- Own additions -->
      <link rel="stylesheet" type="text/css" href="css/festipedia.css" media="screen" />
     
+     <!-- jquerry scripts voor popup en validator -->
      <script src="js/jquery.js"></script>
      <script src="js/jquery-bpop.js"></script>
      <script src="js/validator.js"></script>
      
+     <!-- regelt de popup functie -->
      <script type="text/javascript">
   ;(function($) {
 
@@ -64,6 +66,7 @@
 
 <body>
     
+    <!-- maakt sql en input output en talen veranderen mogelijk -->
     <%@page import="java.sql.*" %>
     <%@page import="java.io.*" %>
     <%@page import="java.util.ResourceBundle" %>

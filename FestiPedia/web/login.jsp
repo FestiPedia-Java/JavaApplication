@@ -53,6 +53,7 @@
             if (username.toLowerCase().trim().equals("admin") && password.toLowerCase().trim().equals("phl")) {
                   out.println("<p>Welkom " + username + " <a href=\"index.jsp\">Back to main</a></p>");
                   out.println("<p>Ga door naar het <a href=\"admin.jsp\" >Admin Panel</a></p>");
+                  out.println("<p>Ga door naar het <a href=\"ip.jsp\" >IP pagina</a></p>");
                 session.setAttribute("username", username);
             }
            else 
