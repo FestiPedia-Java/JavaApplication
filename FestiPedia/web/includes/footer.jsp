@@ -7,7 +7,21 @@
 <footer class="row">
 
 	<div>All rights reserved &copy; FestiPedia | 52framework! the framework from the future</div>
-        <a href="" id="admin-knop">Admin</a>
+        <a href="" id="admin-knop">
+            <%
+                 String myname =  (String)session.getAttribute("username");
+           if(myname!=null)
+            {
+         
+            out.println("Admin-tool");
+          
+            }
+        else 
+            {
+             out.println("Admin");
+            }
+           %>
+        </a>
 
 </footer>
 

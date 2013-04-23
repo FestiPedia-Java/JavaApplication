@@ -46,12 +46,13 @@
             String username = request.getParameter("name");
             String password = request.getParameter("pass");
             
-           out.println("<p>Checking login...</p>");
+           
            
  
             
             if (username.toLowerCase().trim().equals("admin") && password.toLowerCase().trim().equals("phl")) {
                   out.println("<p>Welkom " + username + " <a href=\"index.jsp\">Back to main</a></p>");
+                  out.println("<p>Ga door naar het <a href=\"admin.jsp\" >Admin Panel</a></p>");
                 session.setAttribute("username", username);
             }
            else 

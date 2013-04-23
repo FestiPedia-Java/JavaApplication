@@ -60,7 +60,13 @@ out.println(" <option value='"+festId+"'> "+festName+"</option>");
             
             <h2>Add a Festival</h2>
             
-            <p> Will be added in the future </p>
+                <form action="editFestival.jsp" method="post">
+                    
+                    <input type="text" placeholder="Festival Name" name="festival_name" />
+ </br>
+                  
+                    <input type="submit" value="Add" name="submit_add" class="red edit-knop"/>
+                </form>
         
          </div></div>
         
