@@ -30,9 +30,9 @@
     <div class="col col_16" > 
         <h1>Visisitor Information</h1>
     </div>
-    <div class="col col_7 tabs" >
-        <div class="col-inhoud">
-            <h3>IP</h3>
+    <div class="col col_16" >
+        
+          
 <%
     Bands b;
         
@@ -40,7 +40,7 @@
            * Zolang er items aanwezig in in de resultset doorlopen we deze en tonen we deze op het scherm
            * We zetten alle info dan in Bands, Bands is een klasse
            */
-    out.println("<table class='ip-tabel'> <tr><td>IP</td><td>Link Clicks</td></tr>" );
+    out.println("<table class='save-tabel'> <tr><td>IP</td><td>Link Clicks</td></tr>" );
     while(rs.next())
         {
             /**
@@ -65,7 +65,7 @@
         out.println("Geen database connectie");
     }
 %>
-        </div>        
+              
     </div>
         
     
