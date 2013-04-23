@@ -12,4 +12,17 @@
         <property name="url" type="string" column="band_url"/>
     
     </class>
+    
+    <class name="com.Festipedia.Festivals" catalog="groep15_festivals" table="festivals">
+        
+        <id name="id" type="java.lang.Integer" column="fest_id">
+            <generator class="identity" />
+        </id>
+        
+        <property name="name" type="string" column="fest_naam"/>
+        <property name="location" type="string" column="fest_locatie"/>
+        <property name="date" type="string" column="fest_datum"/>
+        <property name="duration" type="java.lang.Integer" column="fest_duur"/>
+    
+    </class>
 </hibernate-mapping>

@@ -6,6 +6,6 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost/groep15_festivals</property>
     <property name="hibernate.connection.username">root</property>
-    <mapping class="" file="" jar="" package="" resource="com/Festipedia/Bands.hbm.xml"/>
+    <mapping class="" file="" jar="" package="" resource="com/Festipedia/hibernate.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

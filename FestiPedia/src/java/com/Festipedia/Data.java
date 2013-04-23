@@ -17,40 +17,123 @@ import org.hibernate.Session;
 public class Data {
 
     private Bands band=null;
+    private Festivals fest=null;
+    
     private HibernateUtil helper;
     private Session session =null;
     
     private String bandName = "", bandGenre = "", bandUrl = "";
+    private String festName = "", festLocation = "", festDate = "";
+    private int festDuration=0;
     
     public Data(){}
-    
-    
-    
+
+    /**
+     * Gegevens ophalen voor de band die aangeklikt werd
+     * Band naam
+     */
     public String getBandName(int id){
         session = helper.getSessionFactory().openSession();
         session.beginTransaction();
+        /** 
+         * De sessie haalt de band op met de id die meegegeven werd 
+         */
         band = (Bands)session.get(Bands.class, id);
         bandName = band.getName();
         
         return bandName;
     }
     
+    /**
+     * Band Genre
+     */
     public String getBandGenre(int id){
         session = helper.getSessionFactory().openSession();
         session.beginTransaction();
+        /** 
+         * De sessie haalt de band op met de id die meegegeven werd 
+         */
         band = (Bands)session.get(Bands.class, id);
         bandGenre = band.getMusicStyle();
         
         return bandGenre;
     }
     
+    /**
+     * Band website
+     */
     public String getBandUrl(int id){
         session = helper.getSessionFactory().openSession();
         session.beginTransaction();
+        /** 
+         * De sessie haalt de band op met de id die meegegeven werd 
+         */
         band = (Bands)session.get(Bands.class, id);
         bandUrl = band.getUrl();
         
         return bandUrl;
+    }
+    
+    /**
+     * Gegevens ophalen voor de festival die aangeklikt werd 
+     * Festival naam
+     */
+    public String getFestName(int id){
+        session = helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        /** 
+         * De sessie haalt de festival op met de id die meegegeven werd 
+         */
+        fest = (Festivals)session.get(Festivals.class, id);
+        festName = fest.getName();
+        
+        return festName;
+    }
+    
+    /**
+     * Festival locatie
+     */    
+    public String getFestLocation(int id){
+        session = helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        /** 
+         * De sessie haalt de festival op met de id die meegegeven werd 
+         */
+        fest = (Festivals)session.get(Festivals.class, id);
+        festLocation = fest.getLocation();
+        
+        return festLocation;
+    }
+    
+    /**
+     * Festival datum
+     */
+    public String getFestDate(int id){
+        session = helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        /** 
+         * De sessie haalt de festival op met de id die meegegeven werd 
+         */
+        fest = (Festivals)session.get(Festivals.class, id);
+        festDate = fest.getDate();
+        
+        return festDate;
+    }
+    
+    /**
+     * Festival aantal dagen
+     */
+    public int getFestDuration(int id){
+        session = helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        /** 
+         * De sessie haalt de festival op met de id die meegegeven werd 
+         */
+        fest = (Festivals)session.get(Festivals.class, id);
+        festDuration = fest.getDuration();
+        
+        
+        return festDuration;
     }
     
 }

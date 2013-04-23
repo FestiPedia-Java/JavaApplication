@@ -66,8 +66,9 @@
         </nav>
     </header>
 
-    <div class="row menu-container">
-        <!-- Main Menu -->
+    <div class="row menu-container"><!-- Main Menu -->
+
+
         <ul id="nav">
             <li>
                 <a href="index.jsp">Home</a>
@@ -95,29 +96,35 @@
     <!-- bandDetail -->
     
         <div class="row inhoud"><!-- Content -->
-        <div class="col col_16" > <h1>Band detail</h1></div>
+        <div class="col col_16" > <h1>Festival detail</h1></div>
         <div class="col col_16" >
             <div class="col-inhoud">
 
-            <!-- Gegevens band -->
+            <!-- Gegevens festival -->
             <ui:insert>
             <f:view>
             <h3>                
                 <h:form>
-                    <!-- Bandnaam -->
-                    <h:outputText value="#{data.getBandName(param.id)}"/>
+                    <!-- Festival naam -->
+                    <h:outputText value="#{data.getFestName(param.id)}"/>
                 </h:form>
             </h3>
-                <h5>Genre:</h5>
+                <h5>Location:</h5>
                 <h:form>
-                    <!-- Bandgenre -->
-                    <h:outputText value="#{data.getBandGenre(param.id)}"/>
+                    <!-- Festival locatie -->
+                    <h:outputText value="#{data.getFestLocation(param.id)}"/>
                 </h:form>
                 
-                <h5>Website:</h5>
+                <h5>Date:</h5>
                 <h:form>
-                    <!-- Bandwebsite -->
-                    <a href="#{data.getBandUrl(param.id)}"><h:outputText value="#{data.getBandUrl(param.id)}"/></a>
+                    <!-- Festival datum -->
+                    <h:outputText value="#{data.getFestDate(param.id)}"/>
+                </h:form>
+                
+                <h5>Duration:</h5>
+                <h:form>
+                    <!-- Festival aantal dagen -->
+                    <h:outputText value="#{data.getFestDuration(param.id)}"/> days
                 </h:form>
             </f:view>
             </ui:insert>

@@ -10,6 +10,8 @@
 
     <%@page import="java.sql.*" %>
     <%@page import="java.io.*" %>
+    <%@page import="com.Festipedia.Festivals" %>
+    
 <%
     try{
         /**
@@ -27,20 +29,24 @@
 <div class="row inhoud"><!-- Content -->
 
 	 <div class="col col_16" > 
-             <h1>Upcoming Festivals</h1>
+             <h1>Festivals</h1>
          </div> 
-         <div class="col col_7 tabs" ><div class="col-inhoud">
-                
+         <div class="col col_7 tabs" >
+             <div class="col-inhoud">
+                 <h3>Upcoming Bands</h3>                
 <%
+                Festivals fest;
                 /**
                  * Zolang er items aanwezig in in de resultset doorlopen we deze en tonen we deze op het scherm
                  */
                 while(rs.next())
                 {
-                    String festName = rs.getString("fest_naam");
-                    String festLocation = rs.getString("fest_locatie");
-                    String festDate = rs.getString("fest_datum");
-                    out.println(  festName  + " "+ festLocation + " "+ festDate +" </br>");
+                    fest = new Festivals();
+                    fest.setId(rs.getInt("fest_id"));
+                    fest.setName(rs.getString("fest_naam"));
+                    fest.setLocation(rs.getString("fest_locatie"));
+                    fest.setDate(rs.getString("fest_datum"));
+                    out.println("<a href=faces/festDetail.xhtml?id=" + fest.getId() + ">" + fest.getName() + " </br>");
                 }
                 /**
                  * We sluiten de connectie met de database
