@@ -33,7 +33,7 @@
          </div> 
          <div class="col col_7 tabs" >
              <div class="col-inhoud">
-                 <h3>Upcoming Bands</h3>                
+                 <h3>Upcoming Festivals</h3>                
 <%
                 Festivals fest;
                 /**
