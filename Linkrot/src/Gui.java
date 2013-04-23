@@ -18,6 +18,7 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 public class Gui extends javax.swing.JFrame {
 
     List<String> checkedUrls = new ArrayList();
+    Header h1 = new Header();
     
     public Gui() {
         initComponents();
@@ -72,22 +73,21 @@ public class Gui extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(error)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
-                    .addComponent(urlField)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(search))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(urlField, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -98,17 +98,17 @@ public class Gui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(urlField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(search)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(search)
+                    .addComponent(error))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(error)
-                .addGap(16, 16, 16)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -117,11 +117,21 @@ public class Gui extends javax.swing.JFrame {
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         String urlText = urlField.getText();
-        if(!validateUrl(urlText) || !checkIfURLExists(urlText)){
+        if(!h1.validateUrl(urlText) || !h1.urlExists(urlText)){
             error.setText("This url is not located on the localhost.");
         }else{
-            iterateLinks(urlText);
+            //iterateLinks(urlText);
             error.setText("");
+            List[] alleUrls = h1.getWebpage(urlText);
+            
+            for(int i =0; i<alleUrls[0].size(); i++){
+                webText.append(alleUrls[0].get(i) + "\n");
+            }
+            
+            for(int i =0; i<alleUrls[1].size(); i++){
+                brokenLinks.append(alleUrls[1].get(i) + "");
+            }
+           
         }
     }//GEN-LAST:event_searchActionPerformed
     
@@ -130,16 +140,16 @@ public class Gui extends javax.swing.JFrame {
      * @param url
      * @return 
      */
-    public static boolean validateUrl(String url) {
-        return url.matches("((https?://)?localhost){1}([a-zA-Z0-9]*)?/?([a-zA-Z0-9\\:\\-\\._\\?\\,\\'/\\\\\\+&amp;%\\$#\\=~])*");
-    }
+                    /*public static boolean validateUrl(String url) {
+                        return url.matches("((https?://)?localhost){1}([a-zA-Z0-9]*)?/?([a-zA-Z0-9\\:\\-\\._\\?\\,\\'/\\\\\\+&amp;%\\$#\\=~])*");
+                    }*/
     
     /**
      * Zoekt of er urls op die regel staan.
      * @param line
      * @return 
      */
-    public static boolean checkLine(String line){
+    /*public static boolean checkLine(String line){
         return line.matches("(.)*(<a href=){1}(.)*");
     }
     
@@ -148,37 +158,38 @@ public class Gui extends javax.swing.JFrame {
             if(url.equals(s)) return false;
         }
         return true;
-    }
+    }*/
     
-    public static boolean checkIfURLExists(String targetUrl) {
-        HttpURLConnection httpUrlConn;
-        try {
-            httpUrlConn = (HttpURLConnection) new URL(targetUrl)
-                    .openConnection();
+                    /*public static boolean checkIfURLExists(String targetUrl) {
+                        HttpURLConnection httpUrlConn;
+                        try {
+                            httpUrlConn = (HttpURLConnection) new URL(targetUrl)
+                                    .openConnection();
 
-            httpUrlConn.setRequestMethod("HEAD");
- 
-            // Set timeouts in milliseconds
-            httpUrlConn.setConnectTimeout(30000);
-            httpUrlConn.setReadTimeout(30000);
- 
-            // Print HTTP status code/message for your information.
-            System.out.println("Response Code: "
-                    + httpUrlConn.getResponseCode());
-            System.out.println("Response Message: "
-                    + httpUrlConn.getResponseMessage() +" - " + targetUrl);
- 
-            return (httpUrlConn.getResponseCode() == HttpURLConnection.HTTP_OK);
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            return false;
-        }
-    }
+                            httpUrlConn.setRequestMethod("HEAD");
+
+                            // Set timeouts in milliseconds
+                            httpUrlConn.setConnectTimeout(30000);
+                            httpUrlConn.setReadTimeout(30000);
+
+                            // Print HTTP status code/message for your information.
+                            System.out.println("Response Code: "
+                                    + httpUrlConn.getResponseCode());
+                            System.out.println("Response Message: "
+                                    + httpUrlConn.getResponseMessage() +" - " + targetUrl);
+
+                            return (httpUrlConn.getResponseCode() == HttpURLConnection.HTTP_OK);
+                        } catch (Exception e) {
+                            System.out.println("Error: " + e.getMessage());
+                            return false;
+                        }
+                    }*/
     
     /**
      * Zoekt alle urls op een webpagina.
      * @param urlText 
      */
+    /*
     public void iterateLinks(String urlText){
         
         String line, link;
@@ -223,7 +234,7 @@ public class Gui extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
         } 
-    }
+    }*/
     
     public static void main(String args[]) {
         /* Create and display the form */
