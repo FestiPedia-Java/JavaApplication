@@ -148,10 +148,11 @@ public class Controller implements Runnable{
                                 //De url is een werkende url
                                     if(validateUrl(link) && notYetChecked(link) && !link.matches("(.)*.(pdf|jpg|png)")){
                                     //link is een lokale url die nog niet gecontroleerd is.
-                                        theUrl = link;
+                                        /*theUrl = link;
                                         Thread t = new Thread();
-                                        t.start();
-                                        //getWebpage(link);
+                                        t.start();*/
+                                        getWebpage(link);
+                                        
                                     } else {}
                                 }else{
                                 //deze url is "broken"    
