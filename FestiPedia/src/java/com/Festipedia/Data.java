@@ -31,6 +31,8 @@ public class Data {
     /**
      * Gegevens ophalen voor de band die aangeklikt werd
      * Band naam
+     * @param id
+     * @return 
      */
     public String getBandName(int id){
         session = helper.getSessionFactory().openSession();
@@ -46,6 +48,8 @@ public class Data {
     
     /**
      * Band Genre
+     * @param id
+     * @return 
      */
     public String getBandGenre(int id){
         session = helper.getSessionFactory().openSession();
@@ -61,6 +65,8 @@ public class Data {
     
     /**
      * Band website
+     * @param id
+     * @return 
      */
     public String getBandUrl(int id){
         session = helper.getSessionFactory().openSession();
@@ -77,6 +83,8 @@ public class Data {
     /**
      * Gegevens ophalen voor de festival die aangeklikt werd 
      * Festival naam
+     * @param id
+     * @return 
      */
     public String getFestName(int id){
         session = helper.getSessionFactory().openSession();
@@ -92,7 +100,9 @@ public class Data {
     
     /**
      * Festival locatie
-     */    
+     * @param id
+     * @return 
+     */   
     public String getFestLocation(int id){
         session = helper.getSessionFactory().openSession();
         session.beginTransaction();
@@ -107,8 +117,10 @@ public class Data {
     
     /**
      * Festival datum
+     * @param id
+     * @return 
      */
-    public String getFestDate(int id){
+     public String getFestDate(int id){
         session = helper.getSessionFactory().openSession();
         session.beginTransaction();
         /** 
@@ -122,6 +134,8 @@ public class Data {
     
     /**
      * Festival aantal dagen
+     * @param id
+     * @return 
      */
     public int getFestDuration(int id){
         session = helper.getSessionFactory().openSession();

@@ -15,7 +15,12 @@ public class Bands {
     private String musicStyle;
     private String url;
 
-    //constructor
+    /**
+     * @param id
+     * @param name
+     * @param musicStyle
+     * @param url 
+     */
     public Bands(int id, String name, String musicStyle, String url) {
         this.id = id;
         this.name = name;
@@ -25,36 +30,65 @@ public class Bands {
     
     public Bands(){}
 
-    //getters
+    /**
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * 
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * 
+     * @return musicStyle
+     */
     public String getMusicStyle() {
         return musicStyle;
     }
 
+    /**
+     * 
+     * @return url
+     */
     public String getUrl() {
         return url;
     }
 
-    //setters
+    /**
+     * 
+     * @param id 
+     */
     public void setId(int id) {
         this.id = id;
     }
     
+    /**
+     * 
+     * @param name 
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * 
+     * @param musicStyle 
+     */
     public void setMusicStyle(String musicStyle) {
         this.musicStyle = musicStyle;
     }
 
+    /**
+     * 
+     * @param url 
+     */
     public void setUrl(String url) {
         this.url = url;
     }
