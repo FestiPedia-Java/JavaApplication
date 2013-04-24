@@ -60,7 +60,7 @@
 </script>
 
      
- <link rel="shortcut icon" href="/images/icon.png">
+ <link rel="shortcut icon" href="./images/icon.png">
  
 </head>
 
