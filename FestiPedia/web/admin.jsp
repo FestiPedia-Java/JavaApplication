@@ -14,11 +14,7 @@
 </jsp:include> 
     
 <!-- Javascript zal de form validaten in dit jsp webpage -->
-     <script>
-		$(function(){
-			$("form").validator()
-		})
-	</script>
+    
 
 <div class="row inhoud"><!-- Content -->
 

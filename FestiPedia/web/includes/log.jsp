@@ -21,11 +21,7 @@
             
          %>
          
-          <script>
-		$(function(){
-			$("#login-form").validator()
-		})
-	</script>
+         
                 
                  <form action="login.jsp" method="post" id="login-form">
     <input type="text" name="name" size="50" required="required" /><img class="icon" src="images/user.png" />
