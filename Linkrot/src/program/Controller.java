@@ -5,10 +5,10 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Controller implements Runnable{
+public class Controller /*implements Runnable*/{
     private List<String> checkedUrls = new ArrayList();
     private List<String> brokenUrls = new ArrayList();
-    private String theUrl;
+    //private String theUrl;   //enkel voor multithreading 
     
     /**
      * De list leeg maken.
@@ -24,10 +24,11 @@ public class Controller implements Runnable{
         brokenUrls.clear();
     }
     
+    /* Enkel voor 
     @Override
     public void run(){
         getWebpage(theUrl);
-    }
+    }*/
     
     /**
      * valideert of de url een lokale url is.
@@ -97,7 +98,7 @@ public class Controller implements Runnable{
      * @return 
      **/
     public List[] getWebpage(String url){
-            List[] alleUrls = new List[2];
+            List[] allUrls = new List[2];
             String address = "127.0.0.1";
             int port = 80;
             String get = url.split("http://localhost")[1];
@@ -171,11 +172,11 @@ public class Controller implements Runnable{
                 e.printStackTrace();
             }
             //alle pagina's die gecontroleerd zijn.
-            alleUrls[0] = checkedUrls;
+            allUrls[0] = checkedUrls;
             //alle url's die een foutmelding gaven.
-            alleUrls[1] = brokenUrls;
+            allUrls[1] = brokenUrls;
             
-            return alleUrls;
+            return allUrls;
 
     }
 }
