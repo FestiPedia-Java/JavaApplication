@@ -1,16 +1,50 @@
+package program;
+
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Header {
-    List<String> checkedUrls = new ArrayList();
-    List<String> brokenUrls = new ArrayList();
+public class Controller implements Runnable{
+    private List<String> checkedUrls = new ArrayList();
+    private List<String> brokenUrls = new ArrayList();
+    private String theUrl;
     
+    /**
+     * De list leeg maken.
+     */
+    public void resetCheckedUrls(){
+        checkedUrls.clear();
+    }
+    
+    /**
+     * De list leeg maken.
+     */
+    public void resetBrokenUrls(){
+        brokenUrls.clear();
+    }
+    
+    @Override
+    public void run(){
+        getWebpage(theUrl);
+    }
+    
+    /**
+     * valideert of de url een lokale url is.
+     * @param url
+     * @return 
+     */
     public static boolean validateUrl(String url) {
         return url.matches("((https?://)?localhost){1}([a-zA-Z0-9]*)?/?([a-zA-Z0-9\\:\\-\\._\\?\\,\\'/\\\\\\+&amp;%\\$#\\=~])*");
     }
     
+    /**
+     * Poging om de header(HEAD) van een website te krijgen.
+     * Krijgen we een header, wilt dit zeggen dat de link werkt, anders werkt de link niet.
+     * @param targetUrl
+     * @return 
+     * http://singztechmusings.wordpress.com/2011/05/26/java-how-to-check-if-a-web-page-exists-and-is-available/
+     */
     public static boolean urlExists(String targetUrl) {
         HttpURLConnection httpUrlConn;
         try {
@@ -36,22 +70,38 @@ public class Header {
         }
     }
     
+    /**
+     * In de huidige lijn wordt gekeken of er "<a href=" gevonden wordt want dit wil zeggen dat daarachter een link staat.
+     * @param line
+     * @return 
+     **/
     public static boolean checkForUrl(String line){
         return line.matches("(.)*(<a href=){1}(.)*");
     }
     
+    /**
+     * controleert of de url nog nagekeken is.
+     * @param url 
+     * @return 
+     **/
     public boolean notYetChecked(String url){
         for(String s:checkedUrls){
             if(url.equals(s)) return false;
         }
         return true;
     }
-
-    public List[] getWebpage(String url) {
+    
+    /**
+     * Heel de webpagina wordt ingeladen en er wordt naar links gezocht.
+     * @param url 
+     * @return 
+     **/
+    public List[] getWebpage(String url){
             List[] alleUrls = new List[2];
             String address = "127.0.0.1";
             int port = 80;
-            String header = "GET "+url.split("http://localhost")[1]+" HTTP/1.1\n"
+            String get = url.split("http://localhost")[1];
+            String header = "GET " + get + " HTTP/1.1\n"
                     + "Host: localhost\n"
                     + "User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.8) Gecko/20100723 Ubuntu/10.04 (lucid) Firefox/3.6.8\n"
                     + "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n"
@@ -63,10 +113,13 @@ public class Header {
                     + "\r\n";
             String link;
             
+            //url toevoegen aan de lijst met reeds gecontroleerde url's.
             checkedUrls.add(url);
             
             try {
+                //nieuwe socket aanmaken
                 Socket sck = new Socket(address, port);
+                //website inlezen
                 BufferedReader rd = new BufferedReader(new InputStreamReader(sck.getInputStream()));
                 BufferedWriter wr = new BufferedWriter(
                         new OutputStreamWriter(sck.getOutputStream(), "ISO-8859-1"));
@@ -77,6 +130,7 @@ public class Header {
                 System.out.println(header);
                 System.out.println("RESPONSE HEADER");
                 String line;
+                //1 voor 1 elke lijn afgaan.
                 while ((line = rd.readLine()) != null) {
                     //System.out.println(line);
                     if(checkForUrl(line)){
@@ -86,16 +140,21 @@ public class Header {
                         
                         for(int i=0; i<parts.length; i++){
                             if(parts[i].matches("http.*")){
-                            //Dit gesplitste deel bevat een url met mss nog xwat overbodige tekst achter.
+                            //Dit gesplitste deel bevat een url met mss nog wat overbodige tekst achter.
                                 //verwijderen van tekst die nog achter de link staat.
                                 link = parts[i].substring(0, parts[i].indexOf("\""));
                                 
                                 if(urlExists(link)){
-                                //is een lokale url die nog niet gecontroleerd is
-                                    if(validateUrl(link) && notYetChecked(link) && !link.matches("(.)*.pdf")){
-                                        getWebpage(link);
+                                //De url is een werkende url
+                                    if(validateUrl(link) && notYetChecked(link) && !link.matches("(.)*.(pdf|jpg|png)")){
+                                    //link is een lokale url die nog niet gecontroleerd is.
+                                        theUrl = link;
+                                        Thread t = new Thread();
+                                        t.start();
+                                        //getWebpage(link);
                                     } else {}
                                 }else{
+                                //deze url is "broken"    
                                     brokenUrls.add("Broken link:\t" + link + "\n On page:\t" + url + "\n\n");     
                                 }
                             }
@@ -110,11 +169,12 @@ public class Header {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            //alle pagina's die gecontroleerd zijn.
             alleUrls[0] = checkedUrls;
+            //alle url's die een foutmelding gaven.
             alleUrls[1] = brokenUrls;
             
             return alleUrls;
 
     }
 }
-

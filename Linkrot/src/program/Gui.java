@@ -1,27 +1,30 @@
+package program;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 
 /**
  * @author Kevin
  */
 public class Gui extends javax.swing.JFrame {
 
-    List<String> checkedUrls = new ArrayList();
-    Header h1 = new Header();
+    private Controller h1 = new Controller();
     
     public Gui() {
+        super("Linkrot checker");
         initComponents();
+    }
+    
+    /**
+     * Maakt alle velden leeg
+     */
+    public void clearFields(){
+        h1.resetBrokenUrls();
+        h1.resetCheckedUrls();
+        webText.setText("");
+        brokenLinks.setText("");
     }
 
     /**
@@ -134,22 +137,30 @@ public class Gui extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Haalt de url uit het invoerveld, valideert deze en geeft die dan mee aan getWebpage
+     * Als er een fout is in de url, wordt een error label weergegeven.
+     * @param evt 
+     */
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-        webText.setText(null);
-        brokenLinks.setText(null);
+
+        clearFields();
+        
         String urlText = urlField.getText();
         if(!h1.validateUrl(urlText) || !h1.urlExists(urlText)){
+            //foutieve url
             error.setText("This url is not located on the localhost!");
         }else{
-            //iterateLinks(urlText);
             error.setText("");
             List[] alleUrls = h1.getWebpage(urlText);
             
+            //gecontroleerde pagina's in een textArea zetten
             for(int i =0; i<alleUrls[0].size(); i++){
                 webText.append(alleUrls[0].get(i) + "\n");
             }
             
+            //broken links in andere textArea zetten
             for(int i =0; i<alleUrls[1].size(); i++){
                 brokenLinks.append(alleUrls[1].get(i) + "");
             }
